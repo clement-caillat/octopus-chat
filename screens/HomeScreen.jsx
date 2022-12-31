@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { View, StyleSheet, Text, Image, Button} from 'react-native';
+// import { NavigationActions } from '@react-navigation/native';
 
 
 import { checkLoggedIn, getUserInfos, logOut } from '../src/libraries/Auth';
 
 export default function HomeScreen({navigation}) {
-
     const [user_id, setUserId] = useState();
     const [username, setUsername] = useState();
+
 
     checkLoggedIn(res => {
         if (!res) {
@@ -31,6 +32,7 @@ export default function HomeScreen({navigation}) {
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text>Welcome {username} </Text>
             <Button onPress={() => disconnect()} title="Déconnexion"/>
+            <Button onPress={() => navigation.navigate('ChatScreen')} title="Chat"/>
         </View>
     )
 }
